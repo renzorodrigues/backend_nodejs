@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('../controllers/product-controller')
+const controller = require('../controllers/customer-controller')
 
 router.get('/', controller.get)
-router.get('/:title', controller.getByTitle)
+router.get('/:name', controller.getByName)
 router.get('/admin/:id', controller.getById)
 router.post('/', controller.post)
 router.put('/:id', controller.put)

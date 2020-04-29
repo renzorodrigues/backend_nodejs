@@ -1,4 +1,4 @@
-const repository = require('../repositories/product-repository')
+const repository = require('../repositories/customer-repository')
 
 exports.get = async(req, res, next) => {
   try {
@@ -13,9 +13,9 @@ exports.get = async(req, res, next) => {
   }
 }
 
-exports.getByTitle = async(req, res, next) => {
+exports.getByName = async(req, res, next) => {
   try {
-    var data = await repository.getByTitle(req.params.title)
+    var data = await repository.getByName(req.params.name)
     res.status(200).send(data)
   } catch (error) {
     res.status(500).send({
@@ -41,11 +41,11 @@ exports.post = async(req, res, next) => {
   try {
     await repository.create(req.body)
     res.status(201).send({ 
-      message: 'Produto cadastrado com sucesso!'
+      message: 'Cliente cadastrado com sucesso!'
     })
   } catch (error) {
     res.status(400).send({
-      message: 'Falha ao cadastrar o produto',
+      message: 'Falha ao cadastrar o cliente',
       error: error
     })
   }
@@ -55,11 +55,11 @@ exports.put = async(req, res, next) => {
   try {
     await repository.update(req.params.id, req.body)
     res.status(201).send({
-      message: 'Produto atualizado com sucesso!'
+      message: 'Cliente atualizado com sucesso!'
     })
   } catch (error) {
     res.status(400).send({
-      message: 'Falha ao atualizar produto',
+      message: 'Falha ao atualizar cliente',
       error: error
     })
   }
@@ -69,11 +69,11 @@ exports.delete = async(req, res, next) => {
   try {
     await repository.delete(req.params.id)
     res.status(200).send({
-      message: 'Produto removido com sucesso!'
+      message: 'Cliente removido com sucesso!'
     })
   } catch (error) {
     res.status(400).send({
-      message: 'Falha ao remover produto',
+      message: 'Falha ao remover cliente',
       error: error
     })
   }
